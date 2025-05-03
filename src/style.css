@@ -28,3 +28,9 @@ li{
     background-color: rgb(30, 29, 29,0.6);
    
 }
+.mySwiper button{
+        background-color: red;
+        border-radius: 20px;
+        color: white;
+        padding: 0 8px 0 8px;
+}

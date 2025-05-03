@@ -1,5 +1,9 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/navigation';
 import './style.css'
+import { Navigation } from 'swiper/modules';
 import Comp from './Prop.jsx'
 
 
@@ -89,7 +93,7 @@ function App() {
                                 <li className='hover:text-white'><a href="#home">Movies</a></li>
                                 <li className='hover:text-white'><a href="#home">Series</a></li>
                                 <li className='hover:text-white'><a href="#home">Category</a></li>
-                                
+
 
                             </div>
                             <li className='md:hidden' onClick={updatetogglemenu}><i className="fa-solid fa-bars hover:cursor-pointer hover:text-white"></i></li>
@@ -97,11 +101,11 @@ function App() {
 
                             <li onClick={updateui}><i className="fa-solid fa-magnifying-glass hover:cursor-pointer hover:text-white"></i></li>
                             <li><i className="fa-solid fa-bell hover:cursor-pointer hover:text-white"></i></li>
-                            
+
 
                         </ul>
                     </nav>
-                    
+
                     <div className='border-b-1 border-gray-500 '></div>
                     <div className={`text-white flex flex-col gap-3 pl-3 menu absolute w-full ${togglemenu ? 'h-40' : 'h-0'} overflow-hidden menubox transition-width duration-300 ease-in-out`}>
                         <li><a href="#home">Home</a></li>
@@ -109,7 +113,7 @@ function App() {
                         <li><a href="#home">Series</a></li>
                         <li><a href="#home">Category</a></li>
                     </div>
-                    
+
                     <div className='pt-10 pl-[11%] text-white w-[55%]'>
                         <div className='font-extrabold mb-3'>{description[index].time}</div>
                         <div className='font-extrabold mb-3'> <i className="fa-solid fa-star text-amber-300"></i><span className='ml-1'>{description[index].genre}</span></div>
@@ -129,14 +133,43 @@ function App() {
 
             </header >
             <div className='flex justify-around py-4 border-b-1 border-gray-900 '>
-                <Comp name="Trends Now" icon="fa-solid fa-angle-up"/>
-                <Comp name="Popular" icon="fa-solid fa-fire"/>
+                <Comp name="Trends Now" icon="fa-solid fa-angle-up" />
+                <Comp name="Popular" icon="fa-solid fa-fire" />
                 <Comp name="Preference" icon="fa-solid fa-star" />
                 <Comp name="+ Recently Added" />
             </div>
+            <div className='px-5 mt-3'>
+                <Swiper
+                    slidesPerView={4}
+                    spaceBetween={10}
+                    navigation={true}
+                    modules={[Navigation]}
+                    breakpoints={{
+                        980:{
+                            slidesPerView:8
+                        },
+                        1460:{
+                            slidesPerView:10
+                        }
 
+                    }}
+                    className="mySwiper"
+                >
+                    <SwiperSlide><button className='bg-red-500 rounded-2xl px-1 text-white'>Action</button></SwiperSlide>
+                    <SwiperSlide><button>Crime</button></SwiperSlide>
+                    <SwiperSlide><button>Adventure</button></SwiperSlide>
+                    <SwiperSlide><button>Biography</button></SwiperSlide>
+                    <SwiperSlide><button>Animation</button></SwiperSlide>
+                    <SwiperSlide><button>Comedy</button></SwiperSlide>
+                    <SwiperSlide><button>Documentary</button></SwiperSlide>
+                    <SwiperSlide><button>Dramas</button></SwiperSlide>
+                    <SwiperSlide><button>Webseries</button></SwiperSlide>
+                    <SwiperSlide><button>18+</button></SwiperSlide>
+                    <SwiperSlide><button>Scifi</button></SwiperSlide>
+                    <SwiperSlide><button>Horror</button></SwiperSlide>
+                </Swiper>
+            </div>
 
-           
         </>
 
     );
