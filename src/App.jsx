@@ -169,8 +169,28 @@ function App() {
                     <SwiperSlide><button>Horror</button></SwiperSlide>
                 </Swiper>
             </div>
+            <div className='flex gap-2 flex-wrap'>
+                <div className='flex-grow flex-shrink basis-[100px]'><img src="/images/6under.jpg" alt="" className='w-full '/></div>
+                <div className='flex-grow flex-shrink basis-[100px]'><img src="/images/6under.jpg" alt="" className='w-full '/></div>
+                <div className='flex-grow flex-shrink basis-[100px]'><img src="/images/6under.jpg" alt="" className='w-full '/></div>
+                <div className='flex-grow flex-shrink basis-[100px]'><img src="/images/6under.jpg" alt="" className='w-full '/></div>
+                <div className='flex-grow flex-shrink basis-[100px]'><img src="/images/6under.jpg" alt="" className='w-full '/></div>
+                <div className='flex-grow flex-shrink basis-[100px]'><img src="/images/6under.jpg" alt="" className='w-full '/></div>
+                <div className='flex-grow flex-shrink basis-[100px]'><img src="/images/6under.jpg" alt="" className='w-full '/></div>
+                <div className='flex-grow flex-shrink basis-[100px]'><img src="/images/6under.jpg" alt="" className='w-full '/></div>
+                <div className='flex-grow flex-shrink basis-[100px]'><img src="/images/6under.jpg" alt="" className='w-full '/></div>
+                <div className='flex-grow flex-shrink basis-[100px]'><img src="/images/6under.jpg" alt="" className='w-full '/></div>
+                <div className='flex-grow flex-shrink basis-[100px]'><img src="/images/6under.jpg" alt="" className='w-full '/></div>
+                
+                
+                    
+               
+                
+                
+            </div>
 
         </>
+        
 
     );
 
