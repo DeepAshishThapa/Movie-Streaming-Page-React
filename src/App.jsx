@@ -992,10 +992,13 @@ function App() {
 
                 </Swiper>
             </div>
-            <div className='flex gap-2 overflow-scroll'>
+            <div className='flex gap-2 overflow-scroll moviecarousal'>
+                <button className='w-8 h-8 rounded-full p-1 absolute arrowbutton left-[3%] hover:cursor-pointer' id='arrowbutton1'><i className="fa-solid fa-angle-left text-blue-500"></i></button>
+                <button className='w-8 h-8 rounded-full p-1 absolute arrowbutton left-[95%] hover:cursor-pointer' id='arrowbutton2'><i className="fa-solid fa-angle-right text-blue-500"></i></button>
                 {movies.map((item, index) => (
                     <div id='index' className='min-w-48 mt-5 scrollbar'>
                         <img src={item.img} alt="" className='h-[85%] w-[100%] object-cover ' />
+                            
 
                     </div>
                 ))}
