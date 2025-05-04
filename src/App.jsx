@@ -933,14 +933,14 @@ function App() {
                         <li><a href="#home">Category</a></li>
                     </div>
 
-                    <div className='pt-10 pl-[11%] text-white w-[55%]'>
+                    <div className='pt-10 pl-[11%] text-white w-[70%] sm:w-[55%]'>
                         <div className='font-extrabold mb-3'>{description[index].time}</div>
                         <div className='font-extrabold mb-3'> <i className="fa-solid fa-star text-amber-300"></i><span className='ml-1'>{description[index].genre}</span></div>
                         <h1 className='text-5xl font-extrabold mb-5'>{description[index].title}</h1>
-                        <p className="font-bold">{description[index].description}</p>
+                        <p className="font-bold hidden sm:block">{description[index].description}</p>
                         <div className='mt-5 flex gap-2 items-center '>
-                            <button className="bg-red-500 py-1 px-5 rounded-2xl text-[13px] hover:cursor-pointer"><i className="fa-solid fa-play "></i>WATCH</button>
-                            <button className='bg-black rounded-2xl px-2 py-1 text-[13px]'>+ ADD LIST</button>
+                            <button className="bg-red-500 py-1 px-5 rounded-2xl text-[13px] hover:cursor-pointer "><i className="fa-solid fa-play "></i>WATCH</button>
+                            <button className='bg-black rounded-2xl px-2 py-1 text-[13px] hover:cursor-pointer'>+ ADD LIST</button>
                         </div>
 
 
@@ -951,7 +951,7 @@ function App() {
 
 
             </header >
-            <div className='flex justify-around py-4 border-b-1 border-gray-900 '>
+            <div className='flex flex-col gap-1 sm:gap-0 sm:flex-row sm:justify-around py-4 border-b-1 border-gray-900 '>
                 <Comp name="Trends Now" icon="fa-solid fa-angle-up" />
                 <Comp name="Popular" icon="fa-solid fa-fire" />
                 <Comp name="Preference" icon="fa-solid fa-star" />
