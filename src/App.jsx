@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, use } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -13,6 +13,7 @@ function App() {
     let [index, setindex] = useState(0)
     let [boolean, setboolean] = useState(false)
     let [togglemenu, settogglemenu] = useState(false)
+    const moviecarousalref=useRef(null)
     
     const genres = ["Action", "Crime", "Adventure", "Biography", "Animation", "Comedy",
         "Documentary", "Dramas", "Webseries", "18+", "Scifi", "Horror"]
@@ -883,7 +884,20 @@ function App() {
 
     
 
-    
+    const slideleft=()=>{
+        
+        console.log(moviecarousalref.current);
+        if (moviecarousalref.current) {
+        moviecarousalref.current.scrollLeft-=150;
+        }
+    }
+    const slideright=()=>{
+        
+        console.log(moviecarousalref.current);
+        if (moviecarousalref.current) {
+        moviecarousalref.current.scrollLeft+=150;
+        }
+    }
 
 
 
@@ -900,7 +914,7 @@ function App() {
     return (
         <>
 
-            <header>
+            <header className='relative'>
 
 
                 <div style={{ backgroundImage: `url(${img[index]})` }} className='slider relative'>
@@ -992,15 +1006,15 @@ function App() {
 
                 </Swiper>
             </div>
-            <div className='flex gap-2 overflow-scroll moviecarousal'>
-                <button className='w-8 h-8 rounded-full p-1 absolute arrowbutton left-[3%] hover:cursor-pointer' id='arrowbutton1'><i className="fa-solid fa-angle-left text-blue-500"></i></button>
-                <button className='w-8 h-8 rounded-full p-1 absolute arrowbutton left-[95%] hover:cursor-pointer' id='arrowbutton2'><i className="fa-solid fa-angle-right text-blue-500"></i></button>
+            <div className='flex gap-2 overflow-scroll moviecarousal ' ref={moviecarousalref}>
+                <div className='absolute left-[5%] top-[80%] z-10'><button className='w-8 h-8 rounded-full p-1  arrowbutton  hover:cursor-pointer' id='arrowbutton1' onClick={slideleft}><i className="fa-solid fa-angle-left text-blue-500" ></i></button></div>
+                <div className='absolute left-[95%]'><button className='w-8 h-8 rounded-full p-1  arrowbutton  hover:cursor-pointer' id='arrowbutton2' onClick={slideright} ><i className="fa-solid fa-angle-right text-blue-500"></i></button></div>
                 {movies.map((item, index) => (
-                    <div id='index' className='min-w-48 mt-5 scrollbar'>
+                    <div key={index} className='min-w-48 mt-5 scrollbar'>
                         <img src={item.img} alt="" className='h-[85%] w-[100%] object-cover ' />
-                            
+                                
 
-                    </div>
+                    </div>  
                 ))}
 
 
