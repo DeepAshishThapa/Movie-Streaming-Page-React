@@ -1007,8 +1007,8 @@ function App() {
                 </Swiper>
             </div>
             <div className='flex gap-2 overflow-scroll moviecarousal' ref={moviecarousalref}>
-                <div className='absolute left-[5%] top-[110%] z-10'><button className='w-8 h-8 rounded-full p-1  arrowbutton  hover:cursor-pointer' id='arrowbutton1' onClick={slideleft}><i className="fa-solid fa-angle-left text-blue-500" ></i></button></div>
-                <div className='absolute left-[95%] top-[110%]'><button className='w-8 h-8 rounded-full p-1  arrowbutton  hover:cursor-pointer' id='arrowbutton2' onClick={slideright} ><i className="fa-solid fa-angle-right text-blue-500"></i></button></div>
+                <div className='absolute left-[5%] top-[130%] sm:top-[110%] z-10'><button className='w-8 h-8 rounded-full p-1  arrowbutton  hover:cursor-pointer' id='arrowbutton1' onClick={slideleft}><i className="fa-solid fa-angle-left text-blue-500" ></i></button></div>
+                <div className='absolute left-[90%] sm:left-[95%] top-[130%] sm:top-[110%]'><button className='w-8 h-8 rounded-full p-1  arrowbutton  hover:cursor-pointer' id='arrowbutton2' onClick={slideright} ><i className="fa-solid fa-angle-right text-blue-500"></i></button></div>
                 {movies.map((item, index) => (
                     <div key={index} className='min-w-48 mt-5 scrollbar'>
                         <img src={item.img} alt="" className='h-[85%] w-[100%] object-cover ' />
