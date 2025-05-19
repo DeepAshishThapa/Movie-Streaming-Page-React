@@ -13,14 +13,14 @@ function App() {
     let [index, setindex] = useState(0)
     let [boolean, setboolean] = useState(false)
     let [togglemenu, settogglemenu] = useState(false)
-    const moviecarousalref=useRef(null)
-    
+    const moviecarousalref = useRef(null)
+
     const genres = ["Action", "Crime", "Adventure", "Biography", "Animation", "Comedy",
         "Documentary", "Dramas", "Webseries", "18+", "Scifi", "Horror"]
     const [selectedGenres, setSelectedGenres] = useState([]);
-    const togglegenre=(genre)=>{
-        setSelectedGenres(prev=>
-            prev.includes(genre)? prev.filter(g=>g!==genre): [...prev,genre]
+    const togglegenre = (genre) => {
+        setSelectedGenres(prev =>
+            prev.includes(genre) ? prev.filter(g => g !== genre) : [...prev, genre]
         )
 
     }
@@ -865,6 +865,16 @@ function App() {
         upload: "latest"
     },
     ]
+
+    const Actionmovies = movies.filter((movie, index) => (
+        movie.genre1 == 'action'
+    ))
+    const Crimemovies = movies.filter((movie, index) => (
+        movie.genre2 == 'crime'
+    ))
+    const Adventuremovies = movies.filter((movie, index) => (
+        movie.genre3 == 'adventure'
+    ))
     useEffect(() => {
         const interval = setInterval(() => {
             setindex((prevIndex) => (prevIndex + 1) % img.length)
@@ -882,20 +892,20 @@ function App() {
         settogglemenu(prevvalue => !prevvalue)
     }
 
-    
 
-    const slideleft=()=>{
-        
+
+    const slideleft = () => {
+
         console.log(moviecarousalref.current);
         if (moviecarousalref.current) {
-        moviecarousalref.current.scrollLeft-=150;
+            moviecarousalref.current.scrollLeft -= 150;
         }
     }
-    const slideright=()=>{
-        
+    const slideright = () => {
+
         console.log(moviecarousalref.current);
         if (moviecarousalref.current) {
-        moviecarousalref.current.scrollLeft+=150;
+            moviecarousalref.current.scrollLeft += 150;
         }
     }
 
@@ -991,10 +1001,9 @@ function App() {
                     {genres.map((genre, index) =>
                         <SwiperSlide key={index}>
                             <button onClick={() => togglegenre(genre)}
-                                className={`${
-                                    selectedGenres.includes(genre)?'bg-gray-500':'bg-red-500'
+                                className={`${selectedGenres.includes(genre) ? 'bg-gray-500' : 'bg-red-500'
 
-                                } text-white rounded-2xl px-1 hover:cursor-pointer`}>  
+                                    } text-white rounded-2xl px-1 hover:cursor-pointer`}>
                                 {genre}
 
 
@@ -1008,14 +1017,83 @@ function App() {
             </div>
             <div className='flex gap-2 overflow-scroll moviecarousal' ref={moviecarousalref}>
                 <div className='absolute left-[5%] top-[130%] sm:top-[110%] z-10'><button className='w-8 h-8 rounded-full p-1  arrowbutton  hover:cursor-pointer' id='arrowbutton1' onClick={slideleft}><i className="fa-solid fa-angle-left text-blue-500" ></i></button></div>
-                <div className='absolute left-[90%] sm:left-[95%] top-[130%] sm:top-[110%]'><button className='w-8 h-8 rounded-full p-1  arrowbutton  hover:cursor-pointer' id='arrowbutton2' onClick={slideright} ><i className="fa-solid fa-angle-right text-blue-500"></i></button></div>
-                {movies.map((item, index) => (
-                    <div key={index} className='min-w-48 mt-5 scrollbar'>
-                        <img src={item.img} alt="" className='h-[85%] w-[100%] object-cover ' />
+                <div className='absolute left-[90%] sm:left-[95%] top-[130%] sm:top-[110%] z-10'><button className='w-8 h-8 rounded-full p-1  arrowbutton  hover:cursor-pointer' id='arrowbutton2' onClick={slideright} ><i className="fa-solid fa-angle-right text-blue-500"></i></button></div>
+                {/* {movies.map((item, index) => (
+                    <div key={index} className='min-w-48 mt-5 scrollbar hover:scale-105'>
+                        <img src={item.img} alt="" className='h-[85%] w-[100%] object-cover hover:cursor-pointer ' />
+                        <h1 className='text-white font-bold'>{item.title}</h1>
+                        <ul className='flex justify-between text-gray-500'>
+                            <li className='text-[.9rem]'>2021</li>
+                            <div className='flex text-[.9rem] items-center gap-0.5'>
+                                <li><i class="fa-solid fa-heart"></i></li>
+                                <li ><i class="fa-solid fa-eye"></i></li>
+                                <li className='text-yellow-200'><i class="fa-solid fa-star"></i> <span>{item.rate}</span></li>
+
+                                <li></li>
+                            </div>
+                        </ul>
+
                                 
 
                     </div>  
-                ))}
+                ))} */}
+
+                <div className='flex gap-2'>
+                    {Actionmovies.map((actionmovie, index) => (
+                        <div key={index} className={`min-w-48 mt-5 scrollbar hover:scale-105 ${selectedGenres.includes('Action')?'hidden':'block'}`}>
+                            <img src={actionmovie.img} alt="" className='h-[80%] w-[100%] object-cover hover:cursor-pointer' />
+                            <h1 className='text-white font-bold'>{actionmovie.title}</h1>
+                            <ul className='flex justify-between text-gray-500'>
+                                <li className='text-[.9rem]'>2021</li>
+                                <div className='flex text-[.9rem] items-center gap-0.5'>
+                                    <li><i class="fa-solid fa-heart"></i></li>
+                                    <li ><i class="fa-solid fa-eye"></i></li>
+                                    <li className='text-yellow-200'><i class="fa-solid fa-star"></i> <span>{actionmovie.rate}</span></li>
+
+                                    <li></li>
+                                </div>
+                            </ul>
+
+                        </div>
+
+                    ))}
+                    {Crimemovies.map((crimemovie, index) => (
+                        <div key={index} className='min-w-48 mt-5 scrollbar hover:scale-105'>
+                            <img src={crimemovie.img} alt="" className='h-[85%] w-[100%] object-cover hover:cursor-pointer' />
+                            <h1 className='text-white font-bold'>{crimemovie.title}</h1>
+                            <ul className='flex justify-between text-gray-500'>
+                                <li className='text-[.9rem]'>2021</li>
+                                <div className='flex text-[.9rem] items-center gap-0.5'>
+                                    <li><i class="fa-solid fa-heart"></i></li>
+                                    <li ><i class="fa-solid fa-eye"></i></li>
+                                    <li className='text-yellow-200'><i class="fa-solid fa-star"></i> <span>{crimemovie.rate}</span></li>
+
+                                    <li></li>
+                                </div>
+                            </ul>
+
+                        </div>
+
+                    ))}
+                    {Adventuremovies.map((adventuremovie, index) => (
+                        <div key={index} className='min-w-48 mt-5 scrollbar hover:scale-105'>
+                            <img src={adventuremovie.img} alt="" className='h-[85%] w-[100%] object-cover hover:cursor-pointer' />
+                            <h1 className='text-white font-bold'>{adventuremovie.title}</h1>
+                            <ul className='flex justify-between text-gray-500'>
+                                <li className='text-[.9rem]'>2021</li>
+                                <div className='flex text-[.9rem] items-center gap-0.5'>
+                                    <li><i class="fa-solid fa-heart"></i></li>
+                                    <li ><i class="fa-solid fa-eye"></i></li>
+                                    <li className='text-yellow-200'><i class="fa-solid fa-star"></i> <span>{crimemovie.rate}</span></li>
+
+                                    <li></li>
+                                </div>
+                            </ul>
+
+                        </div>
+
+                    ))}
+                </div>
 
 
 
