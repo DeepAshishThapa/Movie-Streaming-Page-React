@@ -1244,7 +1244,16 @@ function App() {
                     ))} */}
                     
 
-                    <Moviescard Actionmovies={Actionmovies} selectedGenres={selectedGenres}/>
+                    <Moviescard Actionmovies={Actionmovies} selectedGenres={selectedGenres} genre='Action'/>
+                    <Moviescard Actionmovies={Crimemovies} selectedGenres={selectedGenres} genre='Crime'/>
+                    <Moviescard Actionmovies={Adventuremovies} selectedGenres={selectedGenres} genre='Adventure'/>
+                    <Moviescard Actionmovies={Biographymovies} selectedGenres={selectedGenres} genre='Biography'/>
+                    <Moviescard Actionmovies={Animationmovies } selectedGenres={selectedGenres} genre='Animation'/>
+                    <Moviescard Actionmovies={ Comedymovies} selectedGenres={selectedGenres} genre='Comedy'/>
+                    <Moviescard Actionmovies={Documentarymovies} selectedGenres={selectedGenres} genre='Documentary'/>
+                    <Moviescard Actionmovies={Dramamovies} selectedGenres={selectedGenres} genre='Dramas'/>
+                    <Moviescard Actionmovies={Eighteenmovies} selectedGenres={selectedGenres} genre='18+'/>
+                    <Moviescard Actionmovies={Scifimovies} selectedGenres={selectedGenres} genre='Scifi'/>
 
 
 

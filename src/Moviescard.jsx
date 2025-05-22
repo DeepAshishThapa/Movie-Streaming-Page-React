@@ -1,8 +1,9 @@
-const Moviescard=React.memo(({ Actionmovies, selectedGenres})=> {   
+import React from 'react'
+const Moviescard=React.memo(({ Actionmovies, selectedGenres,genre})=> {   
     return (
         <>
                 {Actionmovies.map((actionmovie, index) => (
-                        <div key={index} className={`min-w-48 h-[350px] mt-5 scrollbar hover:scale-105 ${selectedGenres.includes('Action')?'hidden':'block'}`}>
+                        <div key={index} className={`min-w-48 h-[350px] mt-5 scrollbar hover:scale-105 ${selectedGenres.includes(genre)?'hidden':'block'}`}>
                             <img src={actionmovie.img} alt="" className='h-[80%] w-[100%] object-cover hover:cursor-pointer' />
                             <h1 className='text-white font-bold'>{actionmovie.title}</h1>
                             <ul className='flex justify-between text-gray-500'>
