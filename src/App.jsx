@@ -868,9 +868,11 @@ function App() {
     },
     ]
 
-        const Actionmovies = useMemo(()=>{return movies.filter((movie, index) => (
+    const Actionmovies = useMemo(() => {
+        return movies.filter((movie, index) => (
             movie.genre1 == 'action'
-        ))},[])
+        ))
+    }, [])
     const Crimemovies = movies.filter((movie, index) => (
         movie.genre2 == 'crime'
     ))
@@ -995,6 +997,12 @@ function App() {
                     </div>
 
                 </div>
+                <div className='flex gap-5 absolute top-[97%] z-1 left-[45%] dots'>
+                    <div className={`w-10 h-1  ${index == 0 ? 'bg-white' : 'bg-gray-500'}`}></div>
+                    <div className={`w-10 h-1  ${index == 1 ? 'bg-white' : 'bg-gray-500'}`}></div>
+                    <div className={`w-10 h-1 ${index == 2 ? 'bg-white' : 'bg-gray-500'}`}></div>
+
+                </div>
 
 
             </header >
@@ -1061,7 +1069,7 @@ function App() {
                     </div>  
                 ))} */}
 
-                <div className='flex gap-2 h-[400px]'>
+                <div className='flex gap-2 h-auto'>
                     {/* {Actionmovies.map((actionmovie, index) => (
                         <div key={index} className={`min-w-48 h-[350px] mt-5 scrollbar hover:scale-105 ${selectedGenres.includes('Action')?'hidden':'block'}`}>
                             <img src={actionmovie.img} alt="" className='h-[80%] w-[100%] object-cover hover:cursor-pointer' />
@@ -1242,23 +1250,23 @@ function App() {
                         </div>
 
                     ))} */}
-                    
 
-                    <Moviescard Actionmovies={Actionmovies} selectedGenres={selectedGenres} genre='Action'/>
-                    <Moviescard Actionmovies={Crimemovies} selectedGenres={selectedGenres} genre='Crime'/>
-                    <Moviescard Actionmovies={Adventuremovies} selectedGenres={selectedGenres} genre='Adventure'/>
-                    <Moviescard Actionmovies={Biographymovies} selectedGenres={selectedGenres} genre='Biography'/>
-                    <Moviescard Actionmovies={Animationmovies } selectedGenres={selectedGenres} genre='Animation'/>
-                    <Moviescard Actionmovies={ Comedymovies} selectedGenres={selectedGenres} genre='Comedy'/>
-                    <Moviescard Actionmovies={Documentarymovies} selectedGenres={selectedGenres} genre='Documentary'/>
-                    <Moviescard Actionmovies={Dramamovies} selectedGenres={selectedGenres} genre='Dramas'/>
-                    <Moviescard Actionmovies={Eighteenmovies} selectedGenres={selectedGenres} genre='18+'/>
-                    <Moviescard Actionmovies={Scifimovies} selectedGenres={selectedGenres} genre='Scifi'/>
+
+                    <Moviescard Actionmovies={Actionmovies} selectedGenres={selectedGenres} genre='Action' />
+                    <Moviescard Actionmovies={Crimemovies} selectedGenres={selectedGenres} genre='Crime' />
+                    <Moviescard Actionmovies={Adventuremovies} selectedGenres={selectedGenres} genre='Adventure' />
+                    <Moviescard Actionmovies={Biographymovies} selectedGenres={selectedGenres} genre='Biography' />
+                    <Moviescard Actionmovies={Animationmovies} selectedGenres={selectedGenres} genre='Animation' />
+                    <Moviescard Actionmovies={Comedymovies} selectedGenres={selectedGenres} genre='Comedy' />
+                    <Moviescard Actionmovies={Documentarymovies} selectedGenres={selectedGenres} genre='Documentary' />
+                    <Moviescard Actionmovies={Dramamovies} selectedGenres={selectedGenres} genre='Dramas' />
+                    <Moviescard Actionmovies={Eighteenmovies} selectedGenres={selectedGenres} genre='18+' />
+                    <Moviescard Actionmovies={Scifimovies} selectedGenres={selectedGenres} genre='Scifi' />
 
 
 
                 </div>
-                
+
 
 
 
@@ -1266,8 +1274,14 @@ function App() {
 
 
             </div>
-            <div className='text-white'>height</div>
+            <div className='relative'>
+                <video src="/john wick.webm" className='w-[90%] m-auto mt-5 border-2 border-white rounded-2xl' controls muted></video>
+                <div className='absolute w-3 h-3'><img src="/121213.jpg" alt="" /></div>
+                <div className='absolute w-3 h-3'><img src="/121213.jpg" alt="" /></div>
+                <div className='absolute w-3 h-3'><img src="/121213.jpg" alt="" /></div>
+            </div>
 
+          
         </>
 
 
