@@ -1276,9 +1276,9 @@ function App() {
             </div>
             <div className='relative'>
                 <video src="/john wick.webm" className='w-[90%] m-auto mt-5 border-2 border-white rounded-2xl' controls muted></video>
-                <div className='absolute w-3 h-3'><img src="/121213.jpg" alt="" /></div>
-                <div className='absolute w-3 h-3'><img src="/121213.jpg" alt="" /></div>
-                <div className='absolute w-3 h-3'><img src="/121213.jpg" alt="" /></div>
+                <div className='absolute w-[120px] h-15 border-2 '><img src="/121213.jpg" alt="" className='object-cover rounded-2xl border-2 border-white'/></div>
+                <div className='absolute w-[120px] h-15 left-[10%]'><img src="/121213.jpg" className='object-cover rounded-2xl border-2 border-white' alt="" /></div>
+                <div className='absolute w-[125px] h-15 left-[20%]'><img src="/121213.jpg" className='object-cover rounded-2xl border-2 border-white' alt="" /></div>
             </div>
 
           
