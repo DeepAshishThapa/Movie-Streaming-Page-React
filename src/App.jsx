@@ -1274,11 +1274,11 @@ function App() {
 
 
             </div>
-            <div className='relative'>
-                <video src="/john wick.webm" className='w-[90%] m-auto mt-5 border-2 border-white rounded-2xl' controls muted></video>
-                <div className='absolute w-[120px] h-15 border-2 '><img src="/121213.jpg" alt="" className='object-cover rounded-2xl border-2 border-white'/></div>
-                <div className='absolute w-[120px] h-15 left-[10%]'><img src="/121213.jpg" className='object-cover rounded-2xl border-2 border-white' alt="" /></div>
-                <div className='absolute w-[125px] h-15 left-[20%]'><img src="/121213.jpg" className='object-cover rounded-2xl border-2 border-white' alt="" /></div>
+            <div className='relative w-[90%] m-auto'>
+                <video src="/john wick.webm" className='w-[100%] m-auto mt-5 border-2 border-white rounded-2xl' controls muted></video>
+                <div className='absolute w-[120px] h-20 left-[1%] bottom-[70%] opacity-70 lg:bottom-[70%] hover:cursor-pointer hover:scale-110'><img src="/121213.jpg" className='object-cover rounded-2xl border-2 border-white h-full w-full'/></div>
+                <div className='absolute w-[120px] h-20 left-[1%] bottom-[45%] opacity-70 lg:bottom-[55%] hover:cursor-pointer hover:scale-110'><img src="/121213.jpg" className='object-cover rounded-2xl border-2 border-white h-full w-full' alt="" /></div>
+                <div className='absolute w-[125px] h-20 left-[1%] bottom-[20%] opacity-70 lg:bottom-[40%] hover:cursor-pointer hover:scale-110'><img src="/121213.jpg" className='object-cover rounded-2xl border-2 border-white h-full w-full' alt="" /></div>
             </div>
 
           
