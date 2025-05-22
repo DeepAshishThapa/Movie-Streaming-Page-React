@@ -1,10 +1,12 @@
-import { useState, useEffect, useRef, use } from 'react'
+import { useState, useEffect, useRef, useMemo } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import './style.css'
 import { Navigation } from 'swiper/modules';
 import Comp from './Prop.jsx'
+import Moviescard from './Moviescard.jsx'
+
 
 
 
@@ -866,14 +868,35 @@ function App() {
     },
     ]
 
-    const Actionmovies = movies.filter((movie, index) => (
-        movie.genre1 == 'action'
-    ))
+        const Actionmovies = useMemo(()=>{return movies.filter((movie, index) => (
+            movie.genre1 == 'action'
+        ))},[])
     const Crimemovies = movies.filter((movie, index) => (
         movie.genre2 == 'crime'
     ))
     const Adventuremovies = movies.filter((movie, index) => (
-        movie.genre3 == 'adventure'
+        movie.genre3 == 'adeventure'
+    ))
+    const Biographymovies = movies.filter((movie, index) => (
+        movie.genre4 == 'biography'
+    ))
+    const Animationmovies = movies.filter((movie, index) => (
+        movie.genre5 == 'animation'
+    ))
+    const Comedymovies = movies.filter((movie, index) => (
+        movie.genre6 == 'comady'
+    ))
+    const Documentarymovies = movies.filter((movie, index) => (
+        movie.genre7 == 'documentary'
+    ))
+    const Dramamovies = movies.filter((movie, index) => (
+        movie.genre8 == 'drama'
+    ))
+    const Eighteenmovies = movies.filter((movie, index) => (
+        movie.genre9 == '18+'
+    ))
+    const Scifimovies = movies.filter((movie, index) => (
+        movie.genre10 == 'scifi'
     ))
     useEffect(() => {
         const interval = setInterval(() => {
@@ -1015,7 +1038,7 @@ function App() {
 
                 </Swiper>
             </div>
-            <div className='flex gap-2 overflow-scroll moviecarousal' ref={moviecarousalref}>
+            <div className='flex gap-2 overflow-scroll moviecarousal h-auto' ref={moviecarousalref} >
                 <div className='absolute left-[5%] top-[130%] sm:top-[110%] z-10'><button className='w-8 h-8 rounded-full p-1  arrowbutton  hover:cursor-pointer' id='arrowbutton1' onClick={slideleft}><i className="fa-solid fa-angle-left text-blue-500" ></i></button></div>
                 <div className='absolute left-[90%] sm:left-[95%] top-[130%] sm:top-[110%] z-10'><button className='w-8 h-8 rounded-full p-1  arrowbutton  hover:cursor-pointer' id='arrowbutton2' onClick={slideright} ><i className="fa-solid fa-angle-right text-blue-500"></i></button></div>
                 {/* {movies.map((item, index) => (
@@ -1038,9 +1061,9 @@ function App() {
                     </div>  
                 ))} */}
 
-                <div className='flex gap-2'>
-                    {Actionmovies.map((actionmovie, index) => (
-                        <div key={index} className={`min-w-48 mt-5 scrollbar hover:scale-105 ${selectedGenres.includes('Action')?'hidden':'block'}`}>
+                <div className='flex gap-2 h-[400px]'>
+                    {/* {Actionmovies.map((actionmovie, index) => (
+                        <div key={index} className={`min-w-48 h-[350px] mt-5 scrollbar hover:scale-105 ${selectedGenres.includes('Action')?'hidden':'block'}`}>
                             <img src={actionmovie.img} alt="" className='h-[80%] w-[100%] object-cover hover:cursor-pointer' />
                             <h1 className='text-white font-bold'>{actionmovie.title}</h1>
                             <ul className='flex justify-between text-gray-500'>
@@ -1058,8 +1081,8 @@ function App() {
 
                     ))}
                     {Crimemovies.map((crimemovie, index) => (
-                        <div key={index} className='min-w-48 mt-5 scrollbar hover:scale-105'>
-                            <img src={crimemovie.img} alt="" className='h-[85%] w-[100%] object-cover hover:cursor-pointer' />
+                        <div key={index} className={`min-w-48 mt-5 scrollbar hover:scale-105 ${selectedGenres.includes('Crime')?'hidden':'block' }`}>
+                            <img src={crimemovie.img} alt="" className={`h-[80%] w-[100%] object-cover hover:cursor-pointer }`}/>
                             <h1 className='text-white font-bold'>{crimemovie.title}</h1>
                             <ul className='flex justify-between text-gray-500'>
                                 <li className='text-[.9rem]'>2021</li>
@@ -1076,15 +1099,15 @@ function App() {
 
                     ))}
                     {Adventuremovies.map((adventuremovie, index) => (
-                        <div key={index} className='min-w-48 mt-5 scrollbar hover:scale-105'>
-                            <img src={adventuremovie.img} alt="" className='h-[85%] w-[100%] object-cover hover:cursor-pointer' />
+                        <div key={index} className={`min-w-48 mt-5 scrollbar hover:scale-105  ${selectedGenres.includes('Adventure')?'hidden':'block' }`}>
+                            <img src={adventuremovie.img} alt="" className='h-[80%] w-[100%] object-cover hover:cursor-pointer' />
                             <h1 className='text-white font-bold'>{adventuremovie.title}</h1>
                             <ul className='flex justify-between text-gray-500'>
                                 <li className='text-[.9rem]'>2021</li>
                                 <div className='flex text-[.9rem] items-center gap-0.5'>
                                     <li><i class="fa-solid fa-heart"></i></li>
                                     <li ><i class="fa-solid fa-eye"></i></li>
-                                    <li className='text-yellow-200'><i class="fa-solid fa-star"></i> <span>{crimemovie.rate}</span></li>
+                                    <li className='text-yellow-200'><i class="fa-solid fa-star"></i> <span>{adventuremovie.rate}</span></li>
 
                                     <li></li>
                                 </div>
@@ -1093,8 +1116,140 @@ function App() {
                         </div>
 
                     ))}
-                </div>
+                    {Biographymovies.map((biographymovie, index) => (
+                        <div key={index} className={`min-w-48 mt-5 scrollbar hover:scale-105 ${selectedGenres.includes('Biography')?'hidden':'block' }`}>
+                            <img src={biographymovie.img} alt="" className='h-[80%] w-[100%] object-cover hover:cursor-pointer' />
+                            <h1 className='text-white font-bold'>{biographymovie.title}</h1>
+                            <ul className='flex justify-between text-gray-500'>
+                                <li className='text-[.9rem]'>2021</li>
+                                <div className='flex text-[.9rem] items-center gap-0.5'>
+                                    <li><i class="fa-solid fa-heart"></i></li>
+                                    <li ><i class="fa-solid fa-eye"></i></li>
+                                    <li className='text-yellow-200'><i class="fa-solid fa-star"></i> <span>{biographymovie.rate}</span></li>
 
+                                    <li></li>
+                                </div>
+                            </ul>
+
+                        </div>
+
+                    ))}
+                    {Animationmovies.map((animationmovie, index) => (
+                        <div key={index} className={`min-w-48 mt-5 scrollbar hover:scale-105 ${selectedGenres.includes('Animation')?'hidden':'block' }`}>
+                            <img src={animationmovie.img} alt="" className='h-[80%] w-[100%] object-cover hover:cursor-pointer' />
+                            <h1 className='text-white font-bold'>{animationmovie.title}</h1>
+                            <ul className='flex justify-between text-gray-500'>
+                                <li className='text-[.9rem]'>2021</li>
+                                <div className='flex text-[.9rem] items-center gap-0.5'>
+                                    <li><i class="fa-solid fa-heart"></i></li>
+                                    <li ><i class="fa-solid fa-eye"></i></li>
+                                    <li className='text-yellow-200'><i class="fa-solid fa-star"></i> <span>{animationmovie.rate}</span></li>
+
+                                    <li></li>
+                                </div>
+                            </ul>
+
+                        </div>
+
+                    ))}
+                    {Comedymovies.map((comedymovie, index) => (
+                        <div key={index} className={`min-w-48 mt-5 scrollbar hover:scale-105 ${selectedGenres.includes('Comedy')?'hidden':'block' }`}>
+                            <img src={comedymovie.img} alt="" className='h-[80%] w-[100%] object-cover hover:cursor-pointer' />
+                            <h1 className='text-white font-bold'>{comedymovie.title}</h1>
+                            <ul className='flex justify-between text-gray-500'>
+                                <li className='text-[.9rem]'>2021</li>
+                                <div className='flex text-[.9rem] items-center gap-0.5'>
+                                    <li><i class="fa-solid fa-heart"></i></li>
+                                    <li ><i class="fa-solid fa-eye"></i></li>
+                                    <li className='text-yellow-200'><i class="fa-solid fa-star"></i> <span>{comedymovie.rate}</span></li>
+
+                                    <li></li>
+                                </div>
+                            </ul>
+
+                        </div>
+
+                    ))}
+                    {Documentarymovies.map((documentarymovie, index) => (
+                        <div key={index} className={`min-w-48 mt-5 scrollbar hover:scale-105 ${selectedGenres.includes('Documentary')?'hidden':'block' }`}>
+                            <img src={documentarymovie.img} alt="" className='h-[80%] w-[100%] object-cover hover:cursor-pointer' />
+                            <h1 className='text-white font-bold'>{documentarymovie.title}</h1>
+                            <ul className='flex justify-between text-gray-500'>
+                                <li className='text-[.9rem]'>2021</li>
+                                <div className='flex text-[.9rem] items-center gap-0.5'>
+                                    <li><i class="fa-solid fa-heart"></i></li>
+                                    <li ><i class="fa-solid fa-eye"></i></li>
+                                    <li className='text-yellow-200'><i class="fa-solid fa-star"></i> <span>{documentarymovie.rate}</span></li>
+
+                                    <li></li>
+                                </div>
+                            </ul>
+
+                        </div>
+
+                    ))}
+                    {Dramamovies.map((dramamovie, index) => (
+                        <div key={index} className={`min-w-48 mt-5 scrollbar hover:scale-105 ${selectedGenres.includes('Dramas')?'hidden':'block' }`}>
+                            <img src={dramamovie.img} alt="" className='h-[80%] w-[100%] object-cover hover:cursor-pointer' />
+                            <h1 className='text-white font-bold'>{dramamovie.title}</h1>
+                            <ul className='flex justify-between text-gray-500'>
+                                <li className='text-[.9rem]'>2021</li>
+                                <div className='flex text-[.9rem] items-center gap-0.5'>
+                                    <li><i class="fa-solid fa-heart"></i></li>
+                                    <li ><i class="fa-solid fa-eye"></i></li>
+                                    <li className='text-yellow-200'><i class="fa-solid fa-star"></i> <span>{dramamovie.rate}</span></li>
+
+                                    <li></li>
+                                </div>
+                            </ul>
+
+                        </div>
+
+                    ))}
+                    {Eighteenmovies.map((eighteenmovie, index) => (
+                        <div key={index} className={`min-w-48 mt-5 scrollbar hover:scale-105 ${selectedGenres.includes('18+')?'hidden':'block' }`}>
+                            <img src={eighteenmovie.img} alt="" className='h-[80%] w-[100%] object-cover hover:cursor-pointer' />
+                            <h1 className='text-white font-bold'>{eighteenmovie.title}</h1>
+                            <ul className='flex justify-between text-gray-500'>
+                                <li className='text-[.9rem]'>2021</li>
+                                <div className='flex text-[.9rem] items-center gap-0.5'>
+                                    <li><i class="fa-solid fa-heart"></i></li>
+                                    <li ><i class="fa-solid fa-eye"></i></li>
+                                    <li className='text-yellow-200'><i class="fa-solid fa-star"></i> <span>{eighteenmovie.rate}</span></li>
+
+                                    <li></li>
+                                </div>
+                            </ul>
+
+                        </div>
+
+                    ))}
+                    {Scifimovies.map((scifimovie, index) => (
+                        <div key={index} className={`min-w-48 mt-5 scrollbar hover:scale-105 ${selectedGenres.includes('Scifi')?'hidden':'block' }`}>
+                            <img src={scifimovie.img} alt="" className='h-[80%] w-[100%] object-cover hover:cursor-pointer' />
+                            <h1 className='text-white font-bold'>{scifimovie.title}</h1>
+                            <ul className='flex justify-between text-gray-500'>
+                                <li className='text-[.9rem]'>2021</li>
+                                <div className='flex text-[.9rem] items-center gap-0.5'>
+                                    <li><i class="fa-solid fa-heart"></i></li>
+                                    <li ><i class="fa-solid fa-eye"></i></li>
+                                    <li className='text-yellow-200'><i class="fa-solid fa-star"></i> <span>{scifimovie.rate}</span></li>
+
+                                    <li></li>
+                                </div>
+                            </ul>
+
+                        </div>
+
+                    ))} */}
+                    
+
+                    <Moviescard Actionmovies={Actionmovies} selectedGenres={selectedGenres}/>
+
+
+
+                </div>
+                
 
 
 
@@ -1102,6 +1257,7 @@ function App() {
 
 
             </div>
+            <div className='text-white'>height</div>
 
         </>
 
