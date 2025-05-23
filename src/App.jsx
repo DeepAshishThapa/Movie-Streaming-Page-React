@@ -16,6 +16,7 @@ function App() {
     let [boolean, setboolean] = useState(false)
     let [togglemenu, settogglemenu] = useState(false)
     const moviecarousalref = useRef(null)
+    let [videos, setvideos] = useState('/john wick.webm')
 
     const genres = ["Action", "Crime", "Adventure", "Biography", "Animation", "Comedy",
         "Documentary", "Dramas", "Webseries", "18+", "Scifi", "Horror"]
@@ -1275,13 +1276,19 @@ function App() {
 
             </div>
             <div className='relative w-[90%] m-auto'>
-                <video src="/john wick.webm" className='w-[100%] m-auto mt-5 border-2 border-white rounded-2xl' controls muted></video>
-                <div className='absolute w-[120px] h-20 left-[1%] bottom-[70%] opacity-70 lg:bottom-[70%] hover:cursor-pointer hover:scale-110'><img src="/121213.jpg" className='object-cover rounded-2xl border-2 border-white h-full w-full'/></div>
-                <div className='absolute w-[120px] h-20 left-[1%] bottom-[45%] opacity-70 lg:bottom-[55%] hover:cursor-pointer hover:scale-110'><img src="/121213.jpg" className='object-cover rounded-2xl border-2 border-white h-full w-full' alt="" /></div>
-                <div className='absolute w-[125px] h-20 left-[1%] bottom-[20%] opacity-70 lg:bottom-[40%] hover:cursor-pointer hover:scale-110'><img src="/121213.jpg" className='object-cover rounded-2xl border-2 border-white h-full w-full' alt="" /></div>
+                <video src={videos} className='w-[100%] m-auto mt-5 border-2 border-white rounded-2xl' controls muted autoPlay></video>
+                <div className='absolute h-[50px] w-[90px] md:w-[120px] md:h-20 bottom-[60%] left-[1%] md:left-[1%] md:bottom-[70%] opacity-70 lg:bottom-[70%] hover:cursor-pointer hover:scale-110' onClick={() => setvideos('/john wick.webm')}>
+                    <img src="/121213.jpg" className='object-cover rounded-2xl border-2 border-white h-full w-full' />
+                </div>
+                <div className='absolute h-[50px] w-[90px]  md:w-[120px] md:h-20 bottom-[60%] left-[30%] md:left-[1%] md:bottom-[45%] opacity-70 lg:bottom-[55%] hover:cursor-pointer hover:scale-110' onClick={() => setvideos('/jurasic world.webm')}>
+                    <img src="/1.jpg" className='object-cover rounded-2xl border-2 border-white h-full w-full' alt="" />
+                </div>
+                <div className='absolute h-[50px] w-[90px] md:w-[125px] md:h-20 bottom-[60%] left-[60%] md:left-[1%] md:bottom-[20%] opacity-70 lg:bottom-[40%] hover:cursor-pointer hover:scale-110' onClick={()=>setvideos('/theboys.webm')}>
+                    <img src="/121214.jpg" className='object-cover rounded-2xl border-2 border-white h-full w-full' alt="" />
+                </div>
             </div>
 
-          
+
         </>
 
 
