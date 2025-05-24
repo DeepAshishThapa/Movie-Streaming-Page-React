@@ -63,3 +63,13 @@ li{
   border-radius: 5px;     /* Track color */
   
 }
+.yearscroll div:hover{
+    cursor: pointer;
+    color: white;
+
+    
+
+}
+.yearscroll div{
+    color: rgb(213, 209, 209);
+}

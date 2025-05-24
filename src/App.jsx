@@ -17,19 +17,25 @@ function App() {
     let [togglemenu, settogglemenu] = useState(false)
     const moviecarousalref = useRef(null)
     let [videos, setvideos] = useState('/john wick.webm')
-    let [yearsbox,setyearsbox]=useState(false)
+    let [yearsbox, setyearsbox] = useState(false)
 
     const genres = ["Action", "Crime", "Adventure", "Biography", "Animation", "Comedy",
         "Documentary", "Dramas", "Webseries", "18+", "Scifi", "Horror"]
+    const sortby = ["All", "Latest"];
     const [selectedGenres, setSelectedGenres] = useState([]);
+    const [selectedSortby, setSelectedSortby] = useState([]);
     const togglegenre = (genre) => {
         setSelectedGenres(prev =>
             prev.includes(genre) ? prev.filter(g => g !== genre) : [...prev, genre]
         )
 
     }
-    const toggleyearsbox=()=>{
-        setyearsbox(prev=>!prev)
+    const togglesortby = (sortby) => {
+        setSelectedSortby(prev => prev.includes(sortby) ? prev.filter(s => s !== sortby) : [...prev, sortby])
+
+    }
+    const toggleyearsbox = () => {
+        setyearsbox(prev => !prev)
     }
     const img = ['/121213.jpg', '/121214.jpg', '/1.jpg']
     const description = [
@@ -1303,19 +1309,24 @@ function App() {
                 <div className='flex mt-5 relative'>
                     <div className='flex gap-3 text-white'>
                         <div>Sort by:</div>
-                        <button className='bg-red-500 px-4 text-white rounded-2xl hover:cursor-pointer sm:w-15 '>All</button>
-                        <button className='bg-red-500 text-white rounded-2xl px-4 hover:cursor-pointer sm:w-20 '>Latest</button>
-                        <button className='bg-gray-500 rounded-2xl px-4 hover:cursor-pointer sm:w-20 ' onClick={toggleyearsbox}>Year</button>
-                        <div className={`absolute left-55 sm:left-58 top-8  w-20 h-30 text-center yearscroll overflow-scroll ${yearsbox?'inline':'hidden'}`}>
+                        {sortby.map((element, index) => (
+                            <button key={index} className={`rounded-xl px-4 hover:cursor-pointer ${selectedSortby.includes(element) ? 'bg-gray-500' : 'bg-red-500'}`} onClick={() => togglesortby(element)}>{element}</button>
+                        ))}
+                        <button className={`rounded-xl px-4 hover:cursor-pointer  ${yearsbox? 'bg-gray-500':'bg-red-500'} `} onClick={toggleyearsbox}>Years</button>
+
+                        <div className={`absolute yearscroll left-52 top-7 w-20 h-30 text-center leading-loose ${yearsbox?'inline':'hidden'}`} 
+                        
+                        >
                             <div>2020</div>
-                            <div>2020</div>
-                            <div>2020</div>
-                            <div>2020</div>
-                            <div>2020</div>
-                            <div>2020</div>
-                            <div>2020</div>
-                            <div>2020</div>
+                            <div>2019</div>
+                            <div>2018</div>
+                            <div>2017</div>
+                            <div>2016</div>
+                            <div>2015</div>
+                            <div>2014</div>
+                            <div>2013</div>
                         </div>
+
                     </div>
                 </div>
             </div>
