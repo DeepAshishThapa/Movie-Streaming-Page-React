@@ -1046,7 +1046,7 @@ function App() {
                             <button onClick={() => togglegenre(genre)}
                                 className={`${selectedGenres.includes(genre) ? 'bg-gray-500' : 'bg-red-500'
 
-                                    } text-white rounded-2xl px-1 hover:cursor-pointer`}>
+                                    } text-white rounded-2xl px-1 hover:cursor-pointer `}>
                                 {genre}
 
 
@@ -1311,12 +1311,12 @@ function App() {
                     <div className='flex gap-3 text-white'>
                         <div>Sort by:</div>
                         {sortby.map((element, index) => (
-                            <button key={index} className={`rounded-xl px-4 hover:cursor-pointer ${selectedSortby.includes(element) ? 'bg-gray-500' : 'bg-red-500'}`} onClick={() => togglesortby(element)}>{element}</button>
+                            <button key={index} className={`rounded-xl px-1.5 sm:px-4 hover:cursor-pointer ${selectedSortby.includes(element) ? 'bg-gray-500' : 'bg-red-500'}`} onClick={() => togglesortby(element)}>{element}</button>
                         ))}
-                        <button className={`rounded-xl px-4 hover:cursor-pointer  ${yearsbox ? 'bg-red-500' : 'bg-gray-500'} `} onClick={toggleyearsbox}>Years</button>
-                        <button className={`rounded-xl px-4 hover:cursor-pointer ${alphabetsbox ? 'bg-red-500' : 'bg-gray-500'}`} onClick={() => setalphabetsbox(prev => !prev)}>A-Z</button>
+                        <button className={`rounded-xl px-1.5 sm:px-4 hover:cursor-pointer  ${yearsbox ? 'bg-red-500' : 'bg-gray-500'} `} onClick={toggleyearsbox}>Years</button>
+                        <button className={`rounded-xl px-1.5 sm:px-4 hover:cursor-pointer ${alphabetsbox ? 'bg-red-500' : 'bg-gray-500'}`} onClick={() => setalphabetsbox(prev => !prev)}>A-Z</button>
 
-                        <div className={`absolute yearscroll left-52 top-7 w-20 h-30 text-center leading-loose ${yearsbox ? 'inline' : 'hidden'}`}
+                        <div className={`absolute yearscroll left-40 sm:left-52 top-7 w-20 h-30 text-center leading-loose ${yearsbox ? 'inline' : 'hidden'}`}
 
 
 
@@ -1331,7 +1331,7 @@ function App() {
                             <div>2014</div>
                             <div>2013</div>
                         </div>
-                        <div className={`absolute yearscroll left-75 top-7 w-13 h-40 text-center leading-loose ${alphabetsbox ? 'inline' : 'hidden'}`}
+                        <div className={`absolute yearscroll left-60  sm:left-75 top-7 w-13 h-40 text-center leading-loose ${alphabetsbox ? 'inline' : 'hidden'}`}
 
 
 
