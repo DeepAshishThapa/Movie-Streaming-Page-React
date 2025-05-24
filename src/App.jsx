@@ -1369,11 +1369,13 @@ function App() {
                     </div>
                 </div>
                 <div className='moviesdisplay'>
-                    <div className={`allmovies ${selectedSortby.includes('All')? 'hidden':'inline'}`}>
-                        {movies.map(movie => {
+                    <div className={`allmovies ${selectedSortby.includes("All")?
+                         'hidden':
+                         'grid [grid-template-columns:repeat(auto-fit,minmax(150px,1fr))]'}`}>
+                        {movies.map((movie,index) => {
                             const { img, title, year, url, rate } = movie
                             return (
-                                <div className='h-[400px] hover:scale-105 mt-5'>
+                                <div className='h-[400px] hover:scale-105 mt-5' key={index}>
                                     <a href="" className=' hover:cursor-pointer'>
                                         <img src={img} alt="" className='h-[70%] w-[100%] object-cover' />
                                         <h1 className='text-white'>{title}</h1>
