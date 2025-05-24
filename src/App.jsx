@@ -18,6 +18,7 @@ function App() {
     const moviecarousalref = useRef(null)
     let [videos, setvideos] = useState('/john wick.webm')
     let [yearsbox, setyearsbox] = useState(false)
+    let [alphabetsbox, setalphabetsbox] = useState(false)
 
     const genres = ["Action", "Crime", "Adventure", "Biography", "Animation", "Comedy",
         "Documentary", "Dramas", "Webseries", "18+", "Scifi", "Horror"]
@@ -1312,11 +1313,15 @@ function App() {
                         {sortby.map((element, index) => (
                             <button key={index} className={`rounded-xl px-4 hover:cursor-pointer ${selectedSortby.includes(element) ? 'bg-gray-500' : 'bg-red-500'}`} onClick={() => togglesortby(element)}>{element}</button>
                         ))}
-                        <button className={`rounded-xl px-4 hover:cursor-pointer  ${yearsbox? 'bg-gray-500':'bg-red-500'} `} onClick={toggleyearsbox}>Years</button>
+                        <button className={`rounded-xl px-4 hover:cursor-pointer  ${yearsbox? 'bg-red-500':'bg-gray-500'} `} onClick={toggleyearsbox}>Years</button>
+                        <button className={`rounded-xl px-4 hover:cursor-pointer ${alphabetsbox?'bg-red-500':'bg-gray-500'}`} onClick={()=>setalphabetsbox(prev=>!prev)}>A-Z</button>
 
                         <div className={`absolute yearscroll left-52 top-7 w-20 h-30 text-center leading-loose ${yearsbox?'inline':'hidden'}`} 
                         
+            
+     
                         >
+
                             <div>2020</div>
                             <div>2019</div>
                             <div>2018</div>
@@ -1325,6 +1330,40 @@ function App() {
                             <div>2015</div>
                             <div>2014</div>
                             <div>2013</div>
+                        </div>
+                        <div className={`absolute yearscroll left-75 top-7 w-13 h-30 text-center leading-loose ${alphabetsbox?'inline':'hidden'}`}
+                        
+                        
+            
+                       
+                        >
+
+                            <div>A</div>
+                            <div>B</div>
+                            <div>C</div>
+                            <div>D</div>
+                            <div>E</div>
+                            <div>F</div>
+                            <div>G</div>
+                            <div>H</div>
+                            <div>I</div>
+                            <div>J</div>
+                            <div>K</div>
+                            <div>L</div>
+                            <div>M</div>
+                            <div>N</div>
+                            <div>O</div>
+                            <div>P</div>
+                            <div>Q</div>
+                            <div>R</div>
+                            <div>S</div>
+                            <div>T</div>
+                            <div>U</div>
+                            <div>V</div>
+                            <div>W</div>
+                            <div>X</div>
+                            <div>Y</div>
+                            <div>Z</div>
                         </div>
 
                     </div>
