@@ -17,6 +17,7 @@ function App() {
     let [togglemenu, settogglemenu] = useState(false)
     const moviecarousalref = useRef(null)
     let [videos, setvideos] = useState('/john wick.webm')
+    let [yearsbox,setyearsbox]=useState(false)
 
     const genres = ["Action", "Crime", "Adventure", "Biography", "Animation", "Comedy",
         "Documentary", "Dramas", "Webseries", "18+", "Scifi", "Horror"]
@@ -26,6 +27,9 @@ function App() {
             prev.includes(genre) ? prev.filter(g => g !== genre) : [...prev, genre]
         )
 
+    }
+    const toggleyearsbox=()=>{
+        setyearsbox(prev=>!prev)
     }
     const img = ['/121213.jpg', '/121214.jpg', '/1.jpg']
     const description = [
@@ -1283,13 +1287,57 @@ function App() {
                 <div className='absolute h-[50px] w-[90px]  md:w-[120px] md:h-20 bottom-[60%] left-[30%] md:left-[1%] md:bottom-[45%] opacity-70 lg:bottom-[55%] hover:cursor-pointer hover:scale-110' onClick={() => setvideos('/jurasic world.webm')}>
                     <img src="/1.jpg" className='object-cover rounded-2xl border-2 border-white h-full w-full' alt="" />
                 </div>
-                <div className='absolute h-[50px] w-[90px] md:w-[125px] md:h-20 bottom-[60%] left-[60%] md:left-[1%] md:bottom-[20%] opacity-70 lg:bottom-[40%] hover:cursor-pointer hover:scale-110' onClick={()=>setvideos('/theboys.webm')}>
+                <div className='absolute h-[50px] w-[90px] md:w-[125px] md:h-20 bottom-[60%] left-[60%] md:left-[1%] md:bottom-[20%] opacity-70 lg:bottom-[40%] hover:cursor-pointer hover:scale-110' onClick={() => setvideos('/theboys.webm')}>
                     <img src="/121214.jpg" className='object-cover rounded-2xl border-2 border-white h-full w-full' alt="" />
+                </div>
+            </div>
+            <div className='sm:mx-20 mx-5'>
+                <div className='text-gray-300 flex justify-around mt-5 sm:flex-row flex-col text-center gap-3'>
+                    <div className='hover:cursor-pointer hover:text-white bg-black sm:bg-transparent'><i class="fa-solid fa-film mr-1"></i>Movies</div>
+                    <div className='hover:cursor-pointer hover:text-white bg-black sm:bg-transparent'><i class="fa-solid fa-ticket mr-1"></i>Series</div>
+                    <div className='hover:cursor-pointer hover:text-white bg-black sm:bg-transparent'><i class="fa-solid fa-check mr-1"></i>Original Series</div>
+                    <div className='hover:cursor-pointer hover:text-white bg-black sm:bg-transparent'>Trailer</div>
+
+                </div>
+                <div className=' border-b-1 border-gray-500 mt-5'></div>
+                <div className='flex mt-5 relative'>
+                    <div className='flex gap-3 text-white'>
+                        <div>Sort by:</div>
+                        <button className='bg-red-500 px-4 text-white rounded-2xl hover:cursor-pointer sm:w-15 '>All</button>
+                        <button className='bg-red-500 text-white rounded-2xl px-4 hover:cursor-pointer sm:w-20 '>Latest</button>
+                        <button className='bg-gray-500 rounded-2xl px-4 hover:cursor-pointer sm:w-20 ' onClick={toggleyearsbox}>Year</button>
+                        <div className={`absolute left-55 sm:left-58 top-8  w-20 h-30 text-center yearscroll overflow-scroll ${yearsbox?'inline':'hidden'}`}>
+                            <div>2020</div>
+                            <div>2020</div>
+                            <div>2020</div>
+                            <div>2020</div>
+                            <div>2020</div>
+                            <div>2020</div>
+                            <div>2020</div>
+                            <div>2020</div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
 
+            <div>hello</div>
+            <div>hello</div>
+            <div>hello</div>
+            <div>hello</div>
+            <div>hello</div>
+            <div>hello</div>
+            <div>hello</div>
+            <div>hello</div>
+            <div>hello</div>
+            <div>hello</div>
+            <div>hello</div>
+            <div>hello</div>
+            <div>hello</div>
+
+
         </>
+
 
 
     );

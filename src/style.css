@@ -34,7 +34,7 @@ li{
         color: white;
         padding: 0 8px 0 8px;
 } */
-::-webkit-scrollbar{
+.moviecarousal::-webkit-scrollbar{
     display: none;
 
 }
@@ -43,4 +43,23 @@ li{
 }
 .arrowbutton:hover{
     background-color: black;
+}
+.yearscroll{
+    overflow-x: hidden;
+    background-color: rgb(38, 38, 38,0.9);
+}   
+
+.yearscroll::-webkit-scrollbar{
+    
+    background: gray; 
+    width: 7px;
+    border-radius: 5px; 
+    
+    
+ 
+}
+.yearscroll::-webkit-scrollbar-thumb {
+  background: red;
+  border-radius: 5px;     /* Track color */
+  
 }
