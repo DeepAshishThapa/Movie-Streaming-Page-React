@@ -1313,13 +1313,13 @@ function App() {
                         {sortby.map((element, index) => (
                             <button key={index} className={`rounded-xl px-4 hover:cursor-pointer ${selectedSortby.includes(element) ? 'bg-gray-500' : 'bg-red-500'}`} onClick={() => togglesortby(element)}>{element}</button>
                         ))}
-                        <button className={`rounded-xl px-4 hover:cursor-pointer  ${yearsbox? 'bg-red-500':'bg-gray-500'} `} onClick={toggleyearsbox}>Years</button>
-                        <button className={`rounded-xl px-4 hover:cursor-pointer ${alphabetsbox?'bg-red-500':'bg-gray-500'}`} onClick={()=>setalphabetsbox(prev=>!prev)}>A-Z</button>
+                        <button className={`rounded-xl px-4 hover:cursor-pointer  ${yearsbox ? 'bg-red-500' : 'bg-gray-500'} `} onClick={toggleyearsbox}>Years</button>
+                        <button className={`rounded-xl px-4 hover:cursor-pointer ${alphabetsbox ? 'bg-red-500' : 'bg-gray-500'}`} onClick={() => setalphabetsbox(prev => !prev)}>A-Z</button>
 
-                        <div className={`absolute yearscroll left-52 top-7 w-20 h-30 text-center leading-loose ${yearsbox?'inline':'hidden'}`} 
-                        
-            
-     
+                        <div className={`absolute yearscroll left-52 top-7 w-20 h-30 text-center leading-loose ${yearsbox ? 'inline' : 'hidden'}`}
+
+
+
                         >
 
                             <div>2020</div>
@@ -1331,11 +1331,11 @@ function App() {
                             <div>2014</div>
                             <div>2013</div>
                         </div>
-                        <div className={`absolute yearscroll left-75 top-7 w-13 h-30 text-center leading-loose ${alphabetsbox?'inline':'hidden'}`}
-                        
-                        
-            
-                       
+                        <div className={`absolute yearscroll left-75 top-7 w-13 h-40 text-center leading-loose ${alphabetsbox ? 'inline' : 'hidden'}`}
+
+
+
+
                         >
 
                             <div>A</div>
@@ -1368,22 +1368,40 @@ function App() {
 
                     </div>
                 </div>
+                <div className='moviesdisplay'>
+                    <div className={`allmovies ${selectedSortby.includes('All')? 'hidden':'inline'}`}>
+                        {movies.map(movie => {
+                            const { img, title, year, url, rate } = movie
+                            return (
+                                <div className='h-[400px] hover:scale-105 mt-5'>
+                                    <a href="" className=' hover:cursor-pointer'>
+                                        <img src={img} alt="" className='h-[70%] w-[100%] object-cover' />
+                                        <h1 className='text-white'>{title}</h1>
+                                        <div className='flex justify-between items-center'>
+                                            <div className='text-gray-500 text-[12px]'>{year}</div>
+                                            <div className='text-gray-500 text-[12px] flex gap-0.5 items-center'>
+                                                <i class="fa-solid fa-heart"></i>
+                                                <i class="fa-solid fa-eye"></i>
+                                                <i class="fa-solid fa-star text-amber-200"></i>
+                                                <span className='text-amber-200'>{rate}</span>
+
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            )
+                        })}
+                    </div>
+                </div>
+
+
+
+
+
             </div>
 
 
-            <div>hello</div>
-            <div>hello</div>
-            <div>hello</div>
-            <div>hello</div>
-            <div>hello</div>
-            <div>hello</div>
-            <div>hello</div>
-            <div>hello</div>
-            <div>hello</div>
-            <div>hello</div>
-            <div>hello</div>
-            <div>hello</div>
-            <div>hello</div>
+
 
 
         </>

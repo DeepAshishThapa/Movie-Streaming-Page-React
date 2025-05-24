@@ -73,3 +73,7 @@ li{
 .yearscroll div{
     color: rgb(213, 209, 209);
 }
+.allmovies{
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(150px,1fr));
+}
