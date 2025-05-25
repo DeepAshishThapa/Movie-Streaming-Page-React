@@ -912,6 +912,12 @@ function App() {
     const Scifimovies = movies.filter((movie, index) => (
         movie.genre10 == 'scifi'
     ))
+    const Latestmovies=movies.filter((movie,index)=>(
+        movie.upload=='latest'
+    )
+
+    )
+    
     useEffect(() => {
         const interval = setInterval(() => {
             setindex((prevIndex) => (prevIndex + 1) % img.length)
@@ -1368,14 +1374,15 @@ function App() {
 
                     </div>
                 </div>
-                <div className='moviesdisplay'>
-                    <div className={`allmovies ${selectedSortby.includes("All")?
+                <div className='moviesdisplay '>
+                    <div className={`allmovies relative mt-5 ${selectedSortby.includes("All")?
                          'hidden':
                          'grid [grid-template-columns:repeat(auto-fit,minmax(150px,1fr))]'}`}>
+                            <div className='absolute text-white text-2xl   font-bold'>All Movies To Watch</div>
                         {movies.map((movie,index) => {
                             const { img, title, year, url, rate } = movie
                             return (
-                                <div className='h-[400px] hover:scale-105 mt-5' key={index}>
+                                <div className='h-[400px] hover:scale-105 mt-10' key={index}>
                                     <a href="" className=' hover:cursor-pointer'>
                                         <img src={img} alt="" className='h-[70%] w-[100%] object-cover' />
                                         <h1 className='text-white'>{title}</h1>
@@ -1392,6 +1399,34 @@ function App() {
                                     </a>
                                 </div>
                             )
+                        })}
+                    </div>
+                    <div className={`latestmovies relative mt-5 ${selectedSortby.includes("Latest")?
+                         'hidden':
+                         'grid [grid-template-columns:repeat(auto-fit,minmax(150px,1fr))]'}`}>
+                            <div className='absolute text-white text-2xl   font-bold'>Latest Movies</div>
+                        {Latestmovies.map((movie,index)=>{
+                            const{img,title,year,url,rate}=movie
+                            return (
+                                <div className='h-[400px] hover:scale-105 mt-10' key={index}>
+                                    <a href="" className=' hover:cursor-pointer'>
+                                        <img src={img} alt="" className='h-[70%] w-[100%] object-cover' />
+                                        <h1 className='text-white'>{title}</h1>
+                                        <div className='flex justify-between items-center'>
+                                            <div className='text-gray-500 text-[12px]'>{year}</div>
+                                            <div className='text-gray-500 text-[12px] flex gap-0.5 items-center'>
+                                                <i class="fa-solid fa-heart"></i>
+                                                <i class="fa-solid fa-eye"></i>
+                                                <i class="fa-solid fa-star text-amber-200"></i>
+                                                <span className='text-amber-200'>{rate}</span>
+
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            )
+
+
                         })}
                     </div>
                 </div>
