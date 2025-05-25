@@ -1,9 +1,10 @@
-function Moviessection({selectedYears,moviesyear}){
+function Moviessection({selectedYears,moviesyear,moviesname}){
     return(
-          <div className={`2020movies relative mt-5 ${selectedYears.includes(2020)?
+          <div className={`2020movies relative mt-5 ${selectedYears.includes(parseInt(moviesname))?
                          'grid [grid-template-columns:repeat(auto-fit,minmax(150px,1fr))]':
                          'hidden'}`}>
-                            <div className='absolute text-white text-2xl   font-bold'>2020 Movies</div>
+                            {moviesyear.length===0?<div className="text-white text-2xl font-bold">No movies found for {moviesname}</div>:<div className='absolute text-white text-2xl   font-bold'>{moviesname} Movies</div>}
+                            
                         {moviesyear.map((movie,index)=>{
                             const{img,title,year,url,rate}=movie
                             return (

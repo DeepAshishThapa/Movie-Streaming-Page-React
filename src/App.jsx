@@ -25,7 +25,7 @@ function App() {
     const genres = ["Action", "Crime", "Adventure", "Biography", "Animation", "Comedy",
         "Documentary", "Dramas", "Webseries", "18+", "Scifi", "Horror"]
     const sortby = ["All", "Latest"];
-    const yearslist=[2020,2019,2018,2017,2016,2015,2014,2013]
+    const yearslist=[2022,2021,2020,2019,2018,2017,2016,2015]
     const [selectedGenres, setSelectedGenres] = useState([]);
     const [selectedSortby, setSelectedSortby] = useState([]);
     const [selectedYears,setSelectedYears]=useState([]);
@@ -927,11 +927,24 @@ function App() {
     const movies2020=movies.filter((movie,index)=>(
          movie.year==2020
     ))
-    const movies2019=movies.filter((movie,index)=>(
-         movie.year==2019
+    const movies2022=movies.filter((movie,index)=>(
+         movie.year==2022
+    ))
+    const movies2021=movies.filter((movie,index)=>(
+         movie.year==2021
     ))
     const movies2018=movies.filter((movie,index)=>(
          movie.year==2018
+    ))
+    const movies2017=movies.filter((movie,index)=>(
+         movie.year==2017
+    ))
+    
+    const movies2016=movies.filter((movie,index)=>(
+         movie.year==2016
+    ))
+    const movies2015=movies.filter((movie,index)=>(
+         movie.year==2015
     ))
     
     
@@ -1471,9 +1484,13 @@ function App() {
                         })}
                     </div> */}
                      
-                     <Moviessection selectedYears={selectedYears} moviesyear={movies2020}/>
-                     <Moviessection selectedYears={selectedYears} moviesyear={movies2019}/>
-                     <Moviessection selectedYears={selectedYears} moviesyear={movies2018}/>
+                     <Moviessection selectedYears={selectedYears} moviesyear={movies2022} moviesname='2022'/>
+                     <Moviessection selectedYears={selectedYears} moviesyear={movies2021} moviesname='2021'/>
+                     <Moviessection selectedYears={selectedYears} moviesyear={movies2020} moviesname='2020'/>
+                     <Moviessection selectedYears={selectedYears} moviesyear={movies2018} moviesname='2018'/>
+                     <Moviessection selectedYears={selectedYears} moviesyear={movies2018} moviesname='2017'/>
+                     <Moviessection selectedYears={selectedYears} moviesyear={movies2018} moviesname='2016'/>
+                     <Moviessection selectedYears={selectedYears} moviesyear={movies2018} moviesname='2015'/>
                      
 
 
