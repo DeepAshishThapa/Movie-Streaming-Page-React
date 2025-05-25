@@ -6,6 +6,7 @@ import './style.css'
 import { Navigation } from 'swiper/modules';
 import Comp from './Prop.jsx'
 import Moviescard from './Moviescard.jsx'
+import Moviessection from './Moviessection.jsx';
 
 
 
@@ -19,12 +20,16 @@ function App() {
     let [videos, setvideos] = useState('/john wick.webm')
     let [yearsbox, setyearsbox] = useState(false)
     let [alphabetsbox, setalphabetsbox] = useState(false)
+    
 
     const genres = ["Action", "Crime", "Adventure", "Biography", "Animation", "Comedy",
         "Documentary", "Dramas", "Webseries", "18+", "Scifi", "Horror"]
     const sortby = ["All", "Latest"];
+    const yearslist=[2020,2019,2018,2017,2016,2015,2014,2013]
     const [selectedGenres, setSelectedGenres] = useState([]);
     const [selectedSortby, setSelectedSortby] = useState([]);
+    const [selectedYears,setSelectedYears]=useState([]);
+
     const togglegenre = (genre) => {
         setSelectedGenres(prev =>
             prev.includes(genre) ? prev.filter(g => g !== genre) : [...prev, genre]
@@ -38,6 +43,10 @@ function App() {
     const toggleyearsbox = () => {
         setyearsbox(prev => !prev)
     }
+    const toggleyears=(year)=>{
+        setSelectedYears(prev=>prev.includes(year)?prev.filter(y=>y!==year):[...prev,year])
+    }
+    console.log(selectedYears)
     const img = ['/121213.jpg', '/121214.jpg', '/1.jpg']
     const description = [
         {
@@ -914,9 +923,18 @@ function App() {
     ))
     const Latestmovies=movies.filter((movie,index)=>(
         movie.upload=='latest'
-    )
-
-    )
+    ))
+    const movies2020=movies.filter((movie,index)=>(
+         movie.year==2020
+    ))
+    const movies2019=movies.filter((movie,index)=>(
+         movie.year==2019
+    ))
+    const movies2018=movies.filter((movie,index)=>(
+         movie.year==2018
+    ))
+    
+    
     
     useEffect(() => {
         const interval = setInterval(() => {
@@ -1322,22 +1340,17 @@ function App() {
                         <button className={`rounded-xl px-1.5 sm:px-4 hover:cursor-pointer  ${yearsbox ? 'bg-red-500' : 'bg-gray-500'} `} onClick={toggleyearsbox}>Years</button>
                         <button className={`rounded-xl px-1.5 sm:px-4 hover:cursor-pointer ${alphabetsbox ? 'bg-red-500' : 'bg-gray-500'}`} onClick={() => setalphabetsbox(prev => !prev)}>A-Z</button>
 
-                        <div className={`absolute yearscroll left-40 sm:left-52 top-7 w-20 h-30 text-center leading-loose ${yearsbox ? 'inline' : 'hidden'}`}
+                        <div className={`absolute z-10 yearscroll left-40 sm:left-52 top-7 w-20 h-30 text-center leading-loose ${yearsbox ? 'inline' : 'hidden'}`}
 
 
 
                         >
 
-                            <div>2020</div>
-                            <div>2019</div>
-                            <div>2018</div>
-                            <div>2017</div>
-                            <div>2016</div>
-                            <div>2015</div>
-                            <div>2014</div>
-                            <div>2013</div>
+                           {yearslist.map((year,index)=>(
+                            <div key={index} onClick={()=>toggleyears(year)}>{year}</div>
+                           ))}
                         </div>
-                        <div className={`absolute yearscroll left-60  sm:left-75 top-7 w-13 h-40 text-center leading-loose ${alphabetsbox ? 'inline' : 'hidden'}`}
+                        <div className={`absolute yearscroll left-60 z-10 sm:left-75 top-7 w-13 h-40 text-center leading-loose ${alphabetsbox ? 'inline' : 'hidden'}`}
 
 
 
@@ -1429,6 +1442,42 @@ function App() {
 
                         })}
                     </div>
+                    {/* <div className={`2020movies relative mt-5 ${selectedYears.includes(2020)?
+                         'grid [grid-template-columns:repeat(auto-fit,minmax(150px,1fr))]':
+                         'hidden'}`}>
+                            <div className='absolute text-white text-2xl   font-bold'>2020 Movies</div>
+                        {movies2020.map((movie,index)=>{
+                            const{img,title,year,url,rate}=movie
+                            return (
+                                <div className='h-[400px] hover:scale-105 mt-10' key={index}>
+                                    <a href="" className=' hover:cursor-pointer'>
+                                        <img src={img} alt="" className='h-[70%] w-[100%] object-cover' />
+                                        <h1 className='text-white'>{title}</h1>
+                                        <div className='flex justify-between items-center'>
+                                            <div className='text-gray-500 text-[12px]'>{year}</div>
+                                            <div className='text-gray-500 text-[12px] flex gap-0.5 items-center'>
+                                                <i class="fa-solid fa-heart"></i>
+                                                <i class="fa-solid fa-eye"></i>
+                                                <i class="fa-solid fa-star text-amber-200"></i>
+                                                <span className='text-amber-200'>{rate}</span>
+
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            )
+
+
+                        })}
+                    </div> */}
+                     
+                     <Moviessection selectedYears={selectedYears} moviesyear={movies2020}/>
+                     <Moviessection selectedYears={selectedYears} moviesyear={movies2019}/>
+                     <Moviessection selectedYears={selectedYears} moviesyear={movies2018}/>
+                     
+
+
+
                 </div>
 
 
