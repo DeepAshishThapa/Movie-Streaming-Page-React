@@ -1360,10 +1360,10 @@ function App() {
                         >
 
                            {yearslist.map((year,index)=>(
-                            <div key={index} onClick={()=>toggleyears(year)}>{year}</div>
+                            <div className={`${selectedYears.includes(year)? 'text-white':'text-gray-400'} hover:cursor-pointer hover:text-white`} key={index} onClick={()=>toggleyears(year)} >{year}</div>
                            ))}
                         </div>
-                        <div className={`absolute yearscroll left-60 z-10 sm:left-75 top-7 w-13 h-40 text-center leading-loose ${alphabetsbox ? 'inline' : 'hidden'}`}
+                        <div className={`absolute  top yearscroll left-60 z-10 sm:left-75 top-7 w-13 h-40 text-center leading-loose ${alphabetsbox ? 'inline' : 'hidden'}`}
 
 
 
