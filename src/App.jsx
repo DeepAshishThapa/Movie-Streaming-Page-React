@@ -1027,7 +1027,7 @@ function App() {
                                         <div className={`absolute left-[20%] top-8 text-white searchbox overflow-y-scroll h-80 yearscroll ${!boolean? 'hidden':null}`}>
                                             {filtersearchmovies.map((movie, index) => (
                                                 <div key={index} className='flex mb-10 justify-between  hover:cursor-pointer px-2 eachmoviebox py-2'  >
-                                                   <div>{movie.title}</div> 
+                                                   <div className='font-bold'>{movie.title}</div> 
                                                    <div><img src={movie.img} alt="" className='w-[50px]' /></div>
                                                 </div>
                                             ))}
