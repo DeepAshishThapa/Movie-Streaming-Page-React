@@ -20,6 +20,8 @@ function App() {
     let [videos, setvideos] = useState('/john wick.webm')
     let [yearsbox, setyearsbox] = useState(false)
     let [alphabetsbox, setalphabetsbox] = useState(false)
+
+    const [searchQuery, setSearchQuery] = useState("");
     
 
     const genres = ["Action", "Crime", "Adventure", "Biography", "Animation", "Comedy",
@@ -983,6 +985,9 @@ function App() {
         }
     }
 
+const filtersearchmovies=movies.filter(movie=>(
+    movie.title.toLowerCase().includes(searchQuery.toLowerCase())
+))
 
 
 
@@ -1014,7 +1019,8 @@ function App() {
 
                             </div>
                             <li className='md:hidden' onClick={updatetogglemenu}><i className="fa-solid fa-bars hover:cursor-pointer hover:text-white"></i></li>
-                            <input type="text" className={`bg-transparent ${boolean ? 'w-40' : 'w-0'} searchmovie ${boolean ? `border-1 border-gray-400` : 'border-none'} rounded-xl pl-1 transition-width duration-300 ease-in-out h-6`} placeholder='search movies' />
+                            <input type="text" className={`bg-transparent ${boolean ? 'w-40' : 'w-0'} searchmovie ${boolean ? `border-1 border-gray-400` : 'border-none'} rounded-xl pl-1 transition-width duration-300 ease-in-out h-6`} placeholder='search movies' 
+                            onChange={(e)=>setSearchQuery(e.target.value)}/>
 
                             <li onClick={updateui}><i className="fa-solid fa-magnifying-glass hover:cursor-pointer hover:text-white"></i></li>
                             <li><i className="fa-solid fa-bell hover:cursor-pointer hover:text-white"></i></li>
@@ -1030,6 +1036,18 @@ function App() {
                         <li><a href="#home">Series</a></li>
                         <li><a href="#home">Category</a></li>
                     </div>
+                    {searchQuery?(
+                        filtersearchmovies.length > 0 ? (
+                    <div className='absolute left-[80%] text-white'>
+                        {filtersearchmovies.map((movie,index)=>(
+                            <div key={index}>{movie.title}</div>    
+                        ))}
+                    </div>
+                        ):(
+                            <div className="text-white mt-2">No movies found</div>
+                        )
+                    ):null}
+                    
 
                     <div className='pt-10 pl-[11%] text-white w-[70%] sm:w-[55%]'>
                         <div className='font-extrabold mb-3'>{description[index].time}</div>
