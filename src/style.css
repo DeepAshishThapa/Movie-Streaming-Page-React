@@ -73,8 +73,12 @@ li{
 .searchbox{
     background-color: rgb(216, 210, 210,0.2);
     border-radius: 10px;
-    padding: 5px 10px 5px 10px;
+    padding: 5px 0px 5px 0px;
     width: 150px;
     
     
+    
+}
+.eachmoviebox:hover{
+    background-color: rgb(205, 202, 202,0.3);
 }

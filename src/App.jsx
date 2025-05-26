@@ -1026,7 +1026,7 @@ function App() {
                                     filtersearchmovies.length > 0 ? (
                                         <div className='absolute left-[20%] top-8 text-white searchbox overflow-y-scroll h-80 yearscroll'>
                                             {filtersearchmovies.map((movie, index) => (
-                                                <div key={index} className='flex h-30 justify-between l'  >
+                                                <div key={index} className='flex mb-10 justify-between  hover:cursor-pointer px-2 eachmoviebox py-2'  >
                                                    <div>{movie.title}</div> 
                                                    <div><img src={movie.img} alt="" className='w-[50px]' /></div>
                                                 </div>
