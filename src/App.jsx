@@ -22,15 +22,15 @@ function App() {
     let [alphabetsbox, setalphabetsbox] = useState(false)
 
     const [searchQuery, setSearchQuery] = useState("");
-    
+
 
     const genres = ["Action", "Crime", "Adventure", "Biography", "Animation", "Comedy",
         "Documentary", "Dramas", "Webseries", "18+", "Scifi", "Horror"]
     const sortby = ["All", "Latest"];
-    const yearslist=[2022,2021,2020,2019,2018,2017,2016,2015]
+    const yearslist = [2022, 2021, 2020, 2019, 2018, 2017, 2016, 2015]
     const [selectedGenres, setSelectedGenres] = useState([]);
     const [selectedSortby, setSelectedSortby] = useState([]);
-    const [selectedYears,setSelectedYears]=useState([]);
+    const [selectedYears, setSelectedYears] = useState([]);
 
     const togglegenre = (genre) => {
         setSelectedGenres(prev =>
@@ -45,8 +45,8 @@ function App() {
     const toggleyearsbox = () => {
         setyearsbox(prev => !prev)
     }
-    const toggleyears=(year)=>{
-        setSelectedYears(prev=>prev.includes(year)?prev.filter(y=>y!==year):[...prev,year])
+    const toggleyears = (year) => {
+        setSelectedYears(prev => prev.includes(year) ? prev.filter(y => y !== year) : [...prev, year])
     }
     console.log(selectedYears)
     const img = ['/121213.jpg', '/121214.jpg', '/1.jpg']
@@ -923,34 +923,34 @@ function App() {
     const Scifimovies = movies.filter((movie, index) => (
         movie.genre10 == 'scifi'
     ))
-    const Latestmovies=movies.filter((movie,index)=>(
-        movie.upload=='latest'
+    const Latestmovies = movies.filter((movie, index) => (
+        movie.upload == 'latest'
     ))
-    const movies2020=movies.filter((movie,index)=>(
-         movie.year==2020
+    const movies2020 = movies.filter((movie, index) => (
+        movie.year == 2020
     ))
-    const movies2022=movies.filter((movie,index)=>(
-         movie.year==2022
+    const movies2022 = movies.filter((movie, index) => (
+        movie.year == 2022
     ))
-    const movies2021=movies.filter((movie,index)=>(
-         movie.year==2021
+    const movies2021 = movies.filter((movie, index) => (
+        movie.year == 2021
     ))
-    const movies2018=movies.filter((movie,index)=>(
-         movie.year==2018
+    const movies2018 = movies.filter((movie, index) => (
+        movie.year == 2018
     ))
-    const movies2017=movies.filter((movie,index)=>(
-         movie.year==2017
+    const movies2017 = movies.filter((movie, index) => (
+        movie.year == 2017
     ))
-    
-    const movies2016=movies.filter((movie,index)=>(
-         movie.year==2016
+
+    const movies2016 = movies.filter((movie, index) => (
+        movie.year == 2016
     ))
-    const movies2015=movies.filter((movie,index)=>(
-         movie.year==2015
+    const movies2015 = movies.filter((movie, index) => (
+        movie.year == 2015
     ))
-    
-    
-    
+
+
+
     useEffect(() => {
         const interval = setInterval(() => {
             setindex((prevIndex) => (prevIndex + 1) % img.length)
@@ -985,9 +985,9 @@ function App() {
         }
     }
 
-const filtersearchmovies=movies.filter(movie=>(
-    movie.title.toLowerCase().includes(searchQuery.toLowerCase())
-))
+    const filtersearchmovies = movies.filter(movie => (
+        movie.title.toLowerCase().includes(searchQuery.toLowerCase())
+    ))
 
 
 
@@ -1019,8 +1019,21 @@ const filtersearchmovies=movies.filter(movie=>(
 
                             </div>
                             <li className='md:hidden' onClick={updatetogglemenu}><i className="fa-solid fa-bars hover:cursor-pointer hover:text-white"></i></li>
-                            <input type="text" className={`bg-transparent ${boolean ? 'w-40' : 'w-0'} searchmovie ${boolean ? `border-1 border-gray-400` : 'border-none'} rounded-xl pl-1 transition-width duration-300 ease-in-out h-6`} placeholder='search movies' 
-                            onChange={(e)=>setSearchQuery(e.target.value)}/>
+                            <div className='relative'>
+                                <input type="text" className={`bg-transparent ${boolean ? 'w-40' : 'w-0'} searchmovie ${boolean ? `border-1 border-gray-400` : 'border-none'} rounded-xl pl-1 transition-width duration-300 ease-in-out h-6`} placeholder='search movies'
+                                    onChange={(e) => setSearchQuery(e.target.value)} />
+                                {searchQuery ? (
+                                    filtersearchmovies.length > 0 ? (
+                                        <div className='absolute left-[20%] top-8 text-white searchbox'>
+                                            {filtersearchmovies.map((movie, index) => (
+                                                <div key={index}>{movie.title}</div>
+                                            ))}
+                                        </div>
+                                    ) : (
+                                        <div className="text-white mt-2">No movies found</div>
+                                    )
+                                ) : null}
+                            </div>
 
                             <li onClick={updateui}><i className="fa-solid fa-magnifying-glass hover:cursor-pointer hover:text-white"></i></li>
                             <li><i className="fa-solid fa-bell hover:cursor-pointer hover:text-white"></i></li>
@@ -1036,18 +1049,8 @@ const filtersearchmovies=movies.filter(movie=>(
                         <li><a href="#home">Series</a></li>
                         <li><a href="#home">Category</a></li>
                     </div>
-                    {searchQuery?(
-                        filtersearchmovies.length > 0 ? (
-                    <div className='absolute left-[80%] text-white'>
-                        {filtersearchmovies.map((movie,index)=>(
-                            <div key={index}>{movie.title}</div>    
-                        ))}
-                    </div>
-                        ):(
-                            <div className="text-white mt-2">No movies found</div>
-                        )
-                    ):null}
-                    
+
+
 
                     <div className='pt-10 pl-[11%] text-white w-[70%] sm:w-[55%]'>
                         <div className='font-extrabold mb-3'>{description[index].time}</div>
@@ -1377,9 +1380,9 @@ const filtersearchmovies=movies.filter(movie=>(
 
                         >
 
-                           {yearslist.map((year,index)=>(
-                            <div className={`${selectedYears.includes(year)? 'text-white':'text-gray-400'} hover:cursor-pointer hover:text-white`} key={index} onClick={()=>toggleyears(year)} >{year}</div>
-                           ))}
+                            {yearslist.map((year, index) => (
+                                <div className={`${selectedYears.includes(year) ? 'text-white' : 'text-gray-400'} hover:cursor-pointer hover:text-white`} key={index} onClick={() => toggleyears(year)} >{year}</div>
+                            ))}
                         </div>
                         <div className={`absolute  top yearscroll left-60 z-10 sm:left-75 top-7 w-13 h-40 text-center leading-loose ${alphabetsbox ? 'inline' : 'hidden'}`}
 
@@ -1419,11 +1422,11 @@ const filtersearchmovies=movies.filter(movie=>(
                     </div>
                 </div>
                 <div className='moviesdisplay '>
-                    <div className={`allmovies relative mt-5 ${selectedSortby.includes("All")?
-                         'hidden':
-                         'grid [grid-template-columns:repeat(auto-fit,minmax(150px,1fr))]'}`}>
-                            <div className='absolute text-white text-2xl   font-bold'>All Movies To Watch</div>
-                        {movies.map((movie,index) => {
+                    <div className={`allmovies relative mt-5 ${selectedSortby.includes("All") ?
+                        'hidden' :
+                        'grid [grid-template-columns:repeat(auto-fit,minmax(150px,1fr))]'}`}>
+                        <div className='absolute text-white text-2xl   font-bold'>All Movies To Watch</div>
+                        {movies.map((movie, index) => {
                             const { img, title, year, url, rate } = movie
                             return (
                                 <div className='h-[400px] hover:scale-105 mt-10' key={index}>
@@ -1445,12 +1448,12 @@ const filtersearchmovies=movies.filter(movie=>(
                             )
                         })}
                     </div>
-                    <div className={`latestmovies relative mt-5 ${selectedSortby.includes("Latest")?
-                         'hidden':
-                         'grid [grid-template-columns:repeat(auto-fit,minmax(150px,1fr))]'}`}>
-                            <div className='absolute text-white text-2xl   font-bold'>Latest Movies</div>
-                        {Latestmovies.map((movie,index)=>{
-                            const{img,title,year,url,rate}=movie
+                    <div className={`latestmovies relative mt-5 ${selectedSortby.includes("Latest") ?
+                        'hidden' :
+                        'grid [grid-template-columns:repeat(auto-fit,minmax(150px,1fr))]'}`}>
+                        <div className='absolute text-white text-2xl   font-bold'>Latest Movies</div>
+                        {Latestmovies.map((movie, index) => {
+                            const { img, title, year, url, rate } = movie
                             return (
                                 <div className='h-[400px] hover:scale-105 mt-10' key={index}>
                                     <a href="" className=' hover:cursor-pointer'>
@@ -1501,15 +1504,15 @@ const filtersearchmovies=movies.filter(movie=>(
 
                         })}
                     </div> */}
-                     
-                     <Moviessection selectedYears={selectedYears} moviesyear={movies2022} moviesname='2022'/>
-                     <Moviessection selectedYears={selectedYears} moviesyear={movies2021} moviesname='2021'/>
-                     <Moviessection selectedYears={selectedYears} moviesyear={movies2020} moviesname='2020'/>
-                     <Moviessection selectedYears={selectedYears} moviesyear={movies2018} moviesname='2018'/>
-                     <Moviessection selectedYears={selectedYears} moviesyear={movies2018} moviesname='2017'/>
-                     <Moviessection selectedYears={selectedYears} moviesyear={movies2018} moviesname='2016'/>
-                     <Moviessection selectedYears={selectedYears} moviesyear={movies2018} moviesname='2015'/>
-                     
+
+                    <Moviessection selectedYears={selectedYears} moviesyear={movies2022} moviesname='2022' />
+                    <Moviessection selectedYears={selectedYears} moviesyear={movies2021} moviesname='2021' />
+                    <Moviessection selectedYears={selectedYears} moviesyear={movies2020} moviesname='2020' />
+                    <Moviessection selectedYears={selectedYears} moviesyear={movies2018} moviesname='2018' />
+                    <Moviessection selectedYears={selectedYears} moviesyear={movies2018} moviesname='2017' />
+                    <Moviessection selectedYears={selectedYears} moviesyear={movies2018} moviesname='2016' />
+                    <Moviessection selectedYears={selectedYears} moviesyear={movies2018} moviesname='2015' />
+
 
 
 

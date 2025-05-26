@@ -70,4 +70,10 @@ li{
     
 
 } */
-
+.searchbox{
+    background-color: rgb(216, 210, 210,0.2);
+    border-radius: 10px;
+    padding: 0 10px 0 10px;
+    width: 150px;
+    line-height: 30px;
+}
