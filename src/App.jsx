@@ -1024,7 +1024,7 @@ function App() {
                                     onChange={(e) => setSearchQuery(e.target.value)} />
                                 {searchQuery ? (
                                     filtersearchmovies.length > 0 ? (
-                                        <div className='absolute left-[20%] top-8 text-white searchbox overflow-y-scroll h-80 yearscroll'>
+                                        <div className={`absolute left-[20%] top-8 text-white searchbox overflow-y-scroll h-80 yearscroll ${!boolean? 'hidden':null}`}>
                                             {filtersearchmovies.map((movie, index) => (
                                                 <div key={index} className='flex mb-10 justify-between  hover:cursor-pointer px-2 eachmoviebox py-2'  >
                                                    <div>{movie.title}</div> 
@@ -1033,7 +1033,7 @@ function App() {
                                             ))}
                                         </div>
                                     ) : (
-                                        <div className="text-white mt-2">No movies found</div>
+                                        <div className={`text-white mt-2 absolute ${!boolean? 'hidden':null}`}>No movies found</div>    
                                     )
                                 ) : null}
                             </div>
